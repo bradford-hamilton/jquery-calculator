@@ -25,6 +25,11 @@ $(document).ready(function() {
     }
   });
 
+  /*
+  I will have this function execute when any operand is clicked and it checks
+  what the last item entered in was and if it was an operand then it will give
+  an error for trying to click an operand twice
+  */
   function operandCheck() {
     var operands = ['+', '-', '*', '/'];
     var lastItem = sCreen.text().slice(-1);
