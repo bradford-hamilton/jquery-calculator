@@ -4,32 +4,24 @@ $(document).ready(function() {
 
   $('span').click(function() {
     if ( !$(this).hasClass('operator') ) {
-      var text = $(this).text();
-      sCreen.text( sCreen.text() + text );
+      sCreen.text( sCreen.text() + $(this).text() );
     } else if ( $(this).text() === 'C' ) {
       sCreen.text('');
-    } else if ( $(this).text() === '+' ) {
+    } else if ( $(this).text() === '+' || $(this).text() === '-' ) {
       operandCheck();
-      sCreen.text( sCreen.text() + '+' );
-    } else if ( $(this).text() === '-' ) {
-      operandCheck()
-      sCreen.text( sCreen.text() + '-' );
+      sCreen.text( sCreen.text() + $(this).text() );
     } else if ( $(this).text() === 'x' ) {
       operandCheck()
       sCreen.text( sCreen.text() + '*' );
     } else if ( $(this).text() === '=' ) {
-      sCreen.text( eval( sCreen.text() ));
+      sCreen.text( eval( sCreen.text() ) );
     } else {
       operandCheck()
       sCreen.text( sCreen.text() + '/' );
     }
   });
 
-  /*
-  I will have this function execute when any operand is clicked and it checks
-  what the last item entered in was and if it was an operand then it will give
-  an error for trying to click an operand twice
-  */
+  //checks to make sure you don't click an operator twice, or throws error
   function operandCheck() {
     var operands = ['+', '-', '*', '/'];
     var lastItem = sCreen.text().slice(-1);
@@ -39,5 +31,4 @@ $(document).ready(function() {
       }
     }
   };
-
 });
